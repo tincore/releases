@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<title th:text="${title}">Title</title>
+<link th:replace="head :: head" />
+<!-- <link rel="stylesheet" -->
+<!-- 	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" /> -->
+<!-- <link rel="stylesheet" -->
+<!-- 	th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" /> -->
+<!-- <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script> -->
+<!-- <script type="text/javascript" -->
+<!-- 	th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script> -->
+</head>
+<body>
+	<div class="container">
+		<div class="navbar navbar-default" th:fragment="navbar (page)">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar-collapse-1"
+						aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">TinAuth</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li th:class="${page == 'home'}?'active'"><a
+							th:href=" @{${@environment.getProperty('ui.url', '/')}}" href="home.html"> Home </a></li>
+
+						<li th:if="${page == 'user_add'}" th:class="${page == 'user_add'}?'active'"><a
+							th:href="@{#}"  href="users.html"> Sign in </a></li>
+
+<!-- @{${@environment.getProperty('ui.url', 'http://localhost:8080')}} -->
+						<li th:if="${page == 'users' or page == 'user_delete' or page == 'user'}" th:class="${page == 'users'}?'active'"><a
+							th:href="@{/admin/users}"  href="users.html"> Users </a></li>
+						<li th:if="${page == 'user'}" th:class="${page == 'user'}?'active'"><a
+							th:href="@{#}"  href="users.html"> Edit </a></li>
+						<li th:if="${page == 'user_delete'}" th:class="${page == 'user_delete'}?'active'"><a
+							th:href="@{#}"  href="users.html"> Delete </a></li>
+					</ul>
+
+					<form sec:authorize="hasRole('ROLE_USER')"  class="navbar-form navbar-right" th:action="@{/logout}"
+						method="post">
+<!-- 						<span sec:authentication="name">Bob</span> -->
+						<input type="submit" class="btn btn-default" value="Logout" />
+					</form>
+
+					<ul sec:authorize="hasRole('ROLE_ADMIN')" class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a th:href="@{/h2-console}">H2 Console</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a th:href="@{/admin/users}">Users administration</a></li>
+							</ul></li>
+					</ul>
+
+					<ul sec:authorize="!hasRole('ROLE_USER')" th:if="${page != 'login'}" class="nav navbar-nav navbar-right">
+						<li><a th:href="@{/login}">Login</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

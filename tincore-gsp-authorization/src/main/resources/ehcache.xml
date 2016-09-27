@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+	<diskStore path="java.io.tmpdir" />
+	<defaultCache maxElementsInMemory="10" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120" overflowToDisk="true" />
+
+	<cache name="books" maxElementsInMemory="50" eternal="false"
+		overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="86400" />
+
+
+	<cache name="org.hibernate.cache.internal.StandardQueryCache"
+		maxElementsInMemory="5" 
+		eternal="false" timeToLiveSeconds="120">
+	</cache>
+
+	<cache name="org.hibernate.cache.spi.UpdateTimestampsCache"
+		maxElementsInMemory="5000" eternal="true">
+	</cache>
+</ehcache>

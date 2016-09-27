@@ -1,0 +1,47 @@
+debug: true
+server:
+  port: 7678
+#  compression:
+#    enabled: true
+#    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+security:
+  oauth2:
+    resource:
+      token-info-uri: ${auth-server:http://localhost:7679/uaa}/oauth/check_token
+    client:
+      client-id: gliderun
+      client-secret: gliderun
+spring:
+  jackson:
+    date-format: com.tincore.gsp.util.jackson.ISO8601DateMillisFormat
+  datasource:
+    url: jdbc:h2:file:~/tincore/gsp/database
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        cache:
+          use_second_level_cache: true
+          use_query_cache: true
+          region.factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
+    javax:
+      persistence:
+        sharedCache:
+          mode: ALL
+  cache:
+    ehcache:
+      config: classpath:ehcache.xml
+  thymeleaf:
+    cache: false
+  data:
+    rest:
+      base-path: /api_data
+logging:
+  level:
+    #org.springframework.security: DEBUG
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+    org.springframework.aop.interceptor.JamonPerformanceMonitorInterceptor: TRACE

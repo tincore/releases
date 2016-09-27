@@ -1,0 +1,4 @@
+spring:
+  datasource:
+    platform: test
+    url: jdbc:h2:mem:testdbintegration
