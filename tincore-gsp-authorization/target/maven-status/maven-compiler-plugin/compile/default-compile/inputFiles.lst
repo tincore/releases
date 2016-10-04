@@ -1,0 +1,17 @@
+/home/tincore/devel/git/tincore-main/tincore/tincore-gsp/tincore-gsp-authorization/src/main/java/com/tincore/auth/server/service/UserNotFoundException.java
+/home/tincore/devel/git/tincore-main/tincore/tincore-gsp/tincore-gsp-authorization/src/main/java/com/tincore/auth/server/domain/web/controller/IndexController.java
+/home/tincore/devel/git/tincore-main/tincore/tincore-gsp/tincore-gsp-authorization/target/generated-sources/com/tincore/auth/server/form/FormMapperImpl.java
+/home/tincore/devel/git/tincore-main/tincore/tincore-gsp/tincore-gsp-authorization/src/main/java/com/tincore/auth/server/service/UserRepository.java
+/home/tincore/devel/git/tincore-main/tincore/tincore-gsp/tincore-gsp-authorization/src/main/java/com/tincore/auth/server/TincoreAuthorizationServerApplication.java
+/home/tincore/devel/git/tincore-main/tincore/tincore-gsp/tincore-gsp-authorization/src/main/java/com/tincore/auth/server/form/FormMapper.java
+/home/tincore/devel/git/tincore-main/tincore/tincore-gsp/tincore-gsp-authorization/src/main/java/com/tincore/auth/server/form/FormMapperUtil.java
+/home/tincore/devel/git/tincore-main/tincore/tincore-gsp/tincore-gsp-authorization/src/main/java/com/tincore/auth/server/service/UserService.java
+/home/tincore/devel/git/tincore-main/tincore/tincore-gsp/tincore-gsp-authorization/src/main/java/com/tincore/auth/server/form/PageForm.java
+/home/tincore/devel/git/tincore-main/tincore/tincore-gsp/tincore-gsp-authorization/src/main/java/com/tincore/auth/server/service/UserServiceImpl.java
+/home/tincore/devel/git/tincore-main/tincore/tincore-gsp/tincore-gsp-authorization/src/main/java/com/tincore/auth/server/form/UserRegisterForm.java
+/home/tincore/devel/git/tincore-main/tincore/tincore-gsp/tincore-gsp-authorization/src/main/java/com/tincore/auth/server/service/UserInvalidException.java
+/home/tincore/devel/git/tincore-main/tincore/tincore-gsp/tincore-gsp-authorization/src/main/java/com/tincore/auth/server/domain/User.java
+/home/tincore/devel/git/tincore-main/tincore/tincore-gsp/tincore-gsp-authorization/src/main/java/com/tincore/auth/server/domain/web/controller/AdminUsersController.java
+/home/tincore/devel/git/tincore-main/tincore/tincore-gsp/tincore-gsp-authorization/src/main/java/com/tincore/auth/server/domain/UserAuthority.java
+/home/tincore/devel/git/tincore-main/tincore/tincore-gsp/tincore-gsp-authorization/src/main/java/com/tincore/auth/server/form/UserEditForm.java
+/home/tincore/devel/git/tincore-main/tincore/tincore-gsp/tincore-gsp-authorization/src/main/java/com/tincore/auth/server/domain/web/controller/LoginController.java

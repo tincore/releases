@@ -1,0 +1,41 @@
+debug: true
+security:
+#  oauth2:
+#    client:
+#      client-id: gliderun
+#      client-secret: gliderun
+#      scope: read, write, openid
+#      auto-approve-scopes: .*
+#    authorization:
+#      check-token-access: permitAll()
+server:
+  port: 7679
+  context-path: /uaa
+logging:
+  level:
+    org.springframework.security: DEBUG
+spring:
+  datasource:
+#    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:file:~/tincore/auth/database
+  h2:
+    console:
+      enabled: true
+  thymeleaf:
+    cache: false
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        cache:
+          use_second_level_cache: true
+          use_query_cache: true
+          region.factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
+    javax:
+      persistence:
+        sharedCache:
+          mode: ALL
+  cache:
+    ehcache:
+      config: classpath:ehcache.xml

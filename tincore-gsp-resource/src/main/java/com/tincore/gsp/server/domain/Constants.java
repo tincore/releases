@@ -2,6 +2,8 @@ package com.tincore.gsp.server.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+
 public interface Constants {
     Date DATE_DATA_ITEM_RESYNC = new Date(1);
     
@@ -29,4 +31,7 @@ public interface Constants {
 
 	int ACTIVITY_LEVEL_ACTIVE = 300;
 	int ACTIVITY_LEVEL_ACTIVE_MIN = ACTIVITY_LEVEL_SEDENTARY;
+
+//	String UUID_TYPE = "UUID"; // "BINARY(16)"; was problematic with liquibase
+	String UUID_TYPE = "BINARY(16)"; 
 }

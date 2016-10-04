@@ -27,7 +27,7 @@ public class BodyMetric implements Serializable {
 	@Id
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(columnDefinition = "BINARY(16)")
+	@Column(columnDefinition = Constants.UUID_TYPE)
 	private UUID id;
 
 	@Column(nullable=false)

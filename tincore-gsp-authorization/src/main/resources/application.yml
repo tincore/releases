@@ -1,13 +1,13 @@
 debug: true
 security:
-  oauth2:
-    client:
-      client-id: gliderun
-      client-secret: gliderun
-      scope: read, write, openid
-      auto-approve-scopes: .*
-    authorization:
-      check-token-access: permitAll()
+#  oauth2:
+#    client:
+#      client-id: gliderun
+#      client-secret: gliderun
+#      scope: read, write, openid
+#      auto-approve-scopes: .*
+#    authorization:
+#      check-token-access: permitAll()
 server:
   port: 7679
   context-path: /uaa
@@ -25,7 +25,7 @@ spring:
     cache: false
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     properties:
       hibernate:
         cache:

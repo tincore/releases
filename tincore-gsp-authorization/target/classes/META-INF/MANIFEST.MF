@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: authorization server
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: tincore
+Implementation-Vendor-Id: com.tincore
+Build-Jdk: 1.8.0_101
+Implementation-URL: http://projects.spring.io/spring-boot/tincore-gsp-
+ authorization/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

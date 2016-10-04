@@ -1,0 +1,56 @@
+databaseChangeLog:
+- changeSet:
+    id: 0002-1
+    author: tincore
+    preConditions:
+        onFail: MARK_RAN
+        sqlCheck:
+          expectedResult: 0
+          sql: SELECT COUNT(1) FROM oauth_client_details WHERE client_id = 'gliderun'
+    changes:
+    - insert:
+        columns:
+        - column:
+            name: client_id
+            type: VARCHAR(255)
+            value: gliderun
+        - column:
+            name: resource_ids
+            type: VARCHAR(255)
+            value:
+        - column:
+            name: client_secret
+            type: VARCHAR(255)
+            value: gliderun
+        - column:
+            name: scope
+            type: VARCHAR(255)
+            value: read,write,openid
+        - column:
+            name: authorized_grant_types
+            type: VARCHAR(255)
+            value: authorization_code,refresh_token,password,implicit
+        - column:
+            name: web_server_redirect_uri
+            type: VARCHAR(255)
+        - column:
+            name: authorities
+            type: VARCHAR(255)
+        - column:
+            name: autoapprove
+            type: VARCHAR(255)
+            value: read,openid,write
+        - column:
+            name: access_token_validity
+            type: INTEGER
+            value: 2147483647
+        - column:
+            name: refresh_token_validity
+            type: INTEGER
+            value: 2147483647
+        - column:
+            name: additional_information
+            type: VARCHAR(4096)
+        schemaName: public
+        tableName: oauth_client_details
+

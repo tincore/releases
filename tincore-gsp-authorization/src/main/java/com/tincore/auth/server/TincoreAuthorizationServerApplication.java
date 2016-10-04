@@ -3,6 +3,7 @@ package com.tincore.auth.server;
 import java.util.Locale;
 
 import javax.annotation.PostConstruct;
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,7 +21,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -46,6 +51,7 @@ public class TincoreAuthorizationServerApplication {
 	@Autowired
 	private UserService userService;
 
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -53,10 +59,9 @@ public class TincoreAuthorizationServerApplication {
 
 	@Configuration
 	static class WebMvcConfiguration extends WebMvcConfigurerAdapter {
+
 		@Override
 		public void addViewControllers(ViewControllerRegistry registry) {
-			// registry.addViewController("login").setViewName("login");
-			// registry.addViewController("/").setViewName("index");
 		}
 
 		@Bean
@@ -89,7 +94,7 @@ public class TincoreAuthorizationServerApplication {
 		@Autowired
 		@Qualifier("tincoreUserDetailsService")
 		private UserDetailsService userDetailsService;
-
+		
 		@Override
 		public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
 			authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
@@ -116,49 +121,35 @@ public class TincoreAuthorizationServerApplication {
 		}
 	}
 
-	// TODO: Make this work
-	// @EnableAuthorizationServer
-	// static class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
-	// @Autowired
-	// private AuthenticationManager authenticationManager;
-	//
-	// @Override
-	// public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-	// endpoints.authenticationManager(authenticationManager);
-	// }
-	//
-	//// @Override
-	//// public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-	//// oauthServer.tokenKeyAccess("permitAll()");
-	////// .checkTokenAccess("isAuthenticated()");
-	//// }
-	//
-	//
-	// @Override
-	// public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-	// clients.inMemory()//
-	//// .withClient("gliderun_web").secret("gliderun")//
-	//// .authorizedGrantTypes("authorization_code", "refresh_token", "password")//
-	//// .authorities("ROLE_CLIENT") //
-	//// .scopes("read", "write", "openid").autoApprove(true) //
-	//// .and()//
-	// .withClient("gliderun").secret("gliderun")//
-	// .authorizedGrantTypes("authorization_code", "refresh_token", "password")//
-	// .authorities("ROLE_CLIENT") //
-	// .scopes("read", "write", "openid").autoApprove(true) //
-	//// .accessTokenValiditySeconds(60 * 60 * 24 * 5)
-	// ;
-	// }
-	// }
+	@EnableAuthorizationServer
+	static class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
+
+
+		@Autowired
+		private DataSource dataSource;
+
+		@Autowired
+		private AuthenticationManager authenticationManager;
+
+		@Override
+		public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+			endpoints.authenticationManager(authenticationManager);
+		}
+
+		@Override
+		 public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+		 oauthServer.tokenKeyAccess("permitAll()")//
+		 .checkTokenAccess("isAuthenticated()");
+		}
+
+		@Override
+		public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+			clients.jdbc(dataSource);
+		}
+	}
 
 	@PostConstruct
 	public void postConstruct() {
 		userService.createDefaultEntitities();
 	}
-
-	// @Profile("!cloud")
-	// @Bean
-	// RequestDumperFilter requestDumperFilter() {
-	// return new RequestDumperFilter();
-	// }
 }
