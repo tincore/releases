@@ -33,7 +33,9 @@ https://play.google.com/store/apps/details?id=com.tincore.and.gliderun
 Synchronize your data from:
  Synchronize menu option > Gliderun SRV
  
-Click perferences in that screen menu to enable autodiscover server and upload data to server.
+Click preferences in that screen menu to enable autodiscover server and upload data to server.
+
+Send me an email if you need more details.
 
 
 
