@@ -1,44 +1,19 @@
-# gliderun-server
+# Tincore releases
 
-Private server for Gliderun Android build 310+
-
-https://play.google.com/store/apps/details?id=com.tincore.and.gliderun
-
-Stores and synchronizes all metrics from and to Gliderun.
-You can host the server at home or private network.
-
-# Installation
-
-You will need Java 8 to execute the packages
-
-Temporarily you can find the two built packages on /build
-
-Authorization server:
+## Tincore authorization server:
 tincore-gsp-authorization-<VERSION>.jar
 
-Resource server:
+## Gliderun resource server:
 tincore-gsp-resource-<VERSION>.jar
 
 Execute both with java -jar <packagename.jar>
 
-When they start succesfully you can access the authorisation server on 
-http://localhost:7679/uaa/login
+Check
 
-You can access as user 'admin' and password 'admin'
+https://github.com/tincore/tincore-aut
 
-# Usage
-Run Gliderun 
-https://play.google.com/store/apps/details?id=com.tincore.and.gliderun
+and 
 
-Synchronize your data from:
- Synchronize menu option > Gliderun SRV
- 
-Click preferences in that screen menu to enable autodiscover server and upload data to server.
+https://github.com/tincore/tincore-gsp-resource
 
-Send me an email if you need more details.
-
-
-
-
-
-
+for details
